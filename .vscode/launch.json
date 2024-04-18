@@ -1,0 +1,13 @@
+{
+  "version": "0.2.0",
+  "configurations": [
+    {
+      "name": "C/C++ Runner: Debug Session",
+      "type": "lldb",
+      "request": "launch",
+      "args": [],
+      "cwd": "/Users/artemratushnyi/Desktop/PROJECT FOR UNI",
+      "program": "/Users/artemratushnyi/Desktop/PROJECT FOR UNI/build/Debug/outDebug"
+    }
+  ]
+}
