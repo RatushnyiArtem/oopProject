@@ -47,8 +47,20 @@ class User{
 class Shop{
     std::string name;
     std::vector<Soap*> elements;
+    User *k;
     public:
-
+    void addSoap(Soap *t){
+        elements.push_back(t);
+    }
+    void chooseSoap(){
+        for(int i = 0; i<elements.size(); i++){
+            if(k->getMoney()<elements[i]->getPrice()){
+                std::swap(elements[i], elements.back());
+                elements.pop_back();
+                i--;
+            }
+        }
+    }
         ~Shop(){
             for(auto *element : elements){
                 delete element;
