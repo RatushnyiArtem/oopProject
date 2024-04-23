@@ -2,6 +2,7 @@
 #include <vector>
 
 class Soap{
+    protected:
     std::string color;
     std::string brand;
     double percentage;
@@ -10,7 +11,14 @@ class Soap{
     public:
         Soap(std::string _color, std::string _brand, double _price, double _percentage = 100): color(_color), brand(_brand), price(_price), percentage(_percentage) {};
         virtual void use(){
-            percentage = percentage - percentage*0.012;
+            if(percentage>0){
+                percentage -= percentage*0.012;
+                if(percentage<0){
+                    percentage = 0;
+                }
+            } else{
+                std::cout<<"We don't have soap, you wasted all soap..."<<std::endl;
+            }
         }
         void soapLeft(){};
         const double getPerc() const{
@@ -45,7 +53,7 @@ class User{
             return f;
         }
         void selectedSoap(){
-            std::cout<<f->getBrand()<<" that's my selected soap."<<std::endl;
+            std::cout<<f->getBrand()<<" that's my selected soap. And here is a procent that remains - "<<f->getPerc()<<std::endl;
         }
         const double getMoney() const{
             return moneyAmount;
@@ -80,10 +88,9 @@ class Shop{
                 std::cin>>choise;
             }
             for(int i = 0; i < elements.size(); i++){
-                if(choise != i+1){
-                    std::swap(elements[i], elements.back());
-                    elements.pop_back();
-                    i--;
+                if(choise == i+1){
+                    std::swap(elements[choise-1], elements[0]);
+                    elements.resize(1);
                 }
             }
             k->returnSoap() = elements[0];
@@ -97,6 +104,28 @@ class Shop{
 };
 
 class liquidSoap : public Soap{
+    public:
+    liquidSoap(std::string _color, std::string _brand, double _price): Soap(_color,_brand,_price){}
+    void use() override{
+        if(percentage>0){
+            percentage -= percentage*0.009;
+            if(percentage < 0){
+                percentage = 0;
+            }
+        } else{
+            std::cout<<"We don't have soap, you wasted all soap..."<<std::endl;
+        }
+    }
+    void makeBubble(){
+        if(percentage>0){
+            percentage -= 10;
+            if(percentage<0){
+                percentage = 0;
+            }
+        } else{
+            std::cout<<"Damn, you spent all soap."<<std::endl;
+        }
+    }
 };
 
 class laundrySoap : public Soap{
@@ -111,17 +140,34 @@ class handSoap : public Soap{
 
 int main(){
     Soap *f = new Soap("dove","floreen",10);
-    Soap *p = new Soap("dskdfksdf","dsklfdksf",20.03);
-    Soap *k = new Soap("dskdfksdf","dsklfdksf",20.1);
+    Soap *p = new Soap("dskdfksdf","dsklfdksf",20);
+    Soap *k = new Soap("dskdfksdf","dsklfdksf",20);
     Soap *j = new Soap("floreen","dove",19.1);
+    liquidSoap *le = new liquidSoap("red", "cringe",15);
     User m("fdfds", "slfksdf",20.02,p);
     Shop shopify;
     shopify.addSoap(f);
     shopify.addSoap(p);
     shopify.addSoap(k);
     shopify.addSoap(j);
+    shopify.addSoap(le);
     shopify.chooseSoap(&m);
     m.useSoap();
+    m.useSoap();
+    m.useSoap();
+    m.useSoap();
+    m.useSoap();
+    m.useSoap();
+    le->makeBubble();
+    le->makeBubble();
+    le->makeBubble();
+    le->makeBubble();
+    le->makeBubble();
+    le->makeBubble();
+    le->makeBubble();
+    le->makeBubble();
+    le->makeBubble();
+    le->makeBubble();
     m.selectedSoap();
     std::cout<<p->getPerc()<<std::endl;
     std::cout<<p->getPrice();
