@@ -19,6 +19,9 @@ class Soap{
         const double getPrice() const{
             return price;
         }
+        const std::string getBrand() const{
+            return brand;
+        }
         virtual ~Soap() {}
 };
 
@@ -47,18 +50,20 @@ class User{
 class Shop{
     std::string name;
     std::vector<Soap*> elements;
-    User *k;
     public:
     void addSoap(Soap *t){
         elements.push_back(t);
     }
-    void chooseSoap(){
+    void chooseSoap(User *k){
         for(int i = 0; i<elements.size(); i++){
             if(k->getMoney()<elements[i]->getPrice()){
                 std::swap(elements[i], elements.back());
                 elements.pop_back();
                 i--;
             }
+        }
+        for(int i = 0; i<elements.size(); i++){
+            std::cout<<elements[i]->getBrand();
         }
     }
         ~Shop(){
@@ -82,9 +87,19 @@ class handSoap : public Soap{
 
 
 int main(){
-    Soap p ("red", "dove",45.0);
-    User m("fdfds", "slfksdf",1001.02,&p);
+    Soap *f = new Soap("dskdfksdf","dsklfdksf",10);
+    Soap *p = new Soap("dskdfksdf","dsklfdksf",20.03);
+    Soap *k = new Soap("dskdfksdf","dsklfdksf",20.1);
+    Soap *j = new Soap("dskdfksdf","dsklfdksf",19.1);
+    User m("fdfds", "slfksdf",20.02,p);
+    Shop shopify;
+    shopify.addSoap(f);
+    shopify.addSoap(p);
+    shopify.addSoap(k);
+    shopify.addSoap(j);
+    shopify.chooseSoap(&m);
     m.useSoap();
-    std::cout<<p.getPerc()<<std::endl;
-    std::cout<<p.getPrice();
+    std::cout<<p->getPerc()<<std::endl;
+    std::cout<<p->getPrice();
+
 }
