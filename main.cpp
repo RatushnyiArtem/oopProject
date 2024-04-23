@@ -41,6 +41,12 @@ class User{
         void useSoap(){
             f->use();
         };
+        Soap*& returnSoap(){
+            return f;
+        }
+        void selectedSoap(){
+            std::cout<<f->getBrand()<<" that's my selected soap."<<std::endl;
+        }
         const double getMoney() const{
             return moneyAmount;
         }
@@ -62,8 +68,25 @@ class Shop{
                 i--;
             }
         }
-        for(int i = 0; i<elements.size(); i++){
-            std::cout<<elements[i]->getBrand();
+        int choise;
+        if(elements.size()!=0){
+            std::cout<<"Which one do you want to buy?: "<<std::endl;
+            for(int i = 0; i<elements.size();i++){
+                std::cout<<i+1<<". "<<elements[i]->getBrand()<<std::endl;
+            }
+            std::cin>>choise;
+            while(choise>elements.size() || choise<1){
+                std::cout<<"Wrong choise, there are no such a number, can you peak another one?: "<<std::endl;
+                std::cin>>choise;
+            }
+            for(int i = 0; i < elements.size(); i++){
+                if(choise != i+1){
+                    std::swap(elements[i], elements.back());
+                    elements.pop_back();
+                    i--;
+                }
+            }
+            k->returnSoap() = elements[0];
         }
     }
         ~Shop(){
@@ -87,10 +110,10 @@ class handSoap : public Soap{
 
 
 int main(){
-    Soap *f = new Soap("dskdfksdf","dsklfdksf",10);
+    Soap *f = new Soap("dove","floreen",10);
     Soap *p = new Soap("dskdfksdf","dsklfdksf",20.03);
     Soap *k = new Soap("dskdfksdf","dsklfdksf",20.1);
-    Soap *j = new Soap("dskdfksdf","dsklfdksf",19.1);
+    Soap *j = new Soap("floreen","dove",19.1);
     User m("fdfds", "slfksdf",20.02,p);
     Shop shopify;
     shopify.addSoap(f);
@@ -99,7 +122,7 @@ int main(){
     shopify.addSoap(j);
     shopify.chooseSoap(&m);
     m.useSoap();
+    m.selectedSoap();
     std::cout<<p->getPerc()<<std::endl;
     std::cout<<p->getPrice();
-
 }
