@@ -1,12 +1,13 @@
+#pragma once
 #include <iostream>
 #include <vector>
-#include </Users/artemratushnyi/Desktop/PROJECT FOR UNI/Classes/Soap.cpp>
-#include </Users/artemratushnyi/Desktop/PROJECT FOR UNI/Classes/User.cpp>
-#include </Users/artemratushnyi/Desktop/PROJECT FOR UNI/Classes/Shop.cpp>
-#include </Users/artemratushnyi/Desktop/PROJECT FOR UNI/Classes/LiquidSoap.cpp>
-#include </Users/artemratushnyi/Desktop/PROJECT FOR UNI/Classes/LaundrySoap.cpp>
-#include </Users/artemratushnyi/Desktop/PROJECT FOR UNI/Classes/ShavingSoap.cpp>
-#include </Users/artemratushnyi/Desktop/PROJECT FOR UNI/Classes/HandSoap.cpp>
+#include "Classes/Soap.cpp"
+#include "Classes/User.cpp"
+#include "Classes/Shop.cpp"
+#include "Classes/LiquidSoap.cpp"
+#include "Classes/LaundrySoap.cpp"
+#include "Classes/ShavingSoap.cpp"
+#include "Classes/HandSoap.cpp"
 
 
 
