@@ -1,5 +1,6 @@
+#pragma once
 #include <iostream>
-#include </Users/artemratushnyi/Desktop/PROJECT FOR UNI/Classes/Soap.cpp>
+#include "Soap.cpp"
 
 class User{
     std::string name;

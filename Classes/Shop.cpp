@@ -1,7 +1,8 @@
+#pragma once
 #include <iostream>
 #include <vector>
-#include </Users/artemratushnyi/Desktop/PROJECT FOR UNI/Classes/Soap.cpp>
-#include </Users/artemratushnyi/Desktop/PROJECT FOR UNI/Classes/User.cpp>
+#include "Soap.cpp"
+#include "User.cpp"
 
 class Shop{
     std::string name;
