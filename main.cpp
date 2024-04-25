@@ -53,7 +53,7 @@ class User{
             return f;
         }
         void selectedSoap(){
-            std::cout<<f->getBrand()<<" that's my selected soap. And here is a procent that remains - "<<f->getPerc()<<std::endl;
+            std::cout<<f->getBrand()<<" that's my selected soap. And here is a procent that remains - "<<f->getPerc()<<"%"<<std::endl;
         }
         const double getMoney() const{
             return moneyAmount;
@@ -129,13 +129,49 @@ class liquidSoap : public Soap{
 };
 
 class laundrySoap : public Soap{
+    public:
+    void use() override{
+        std::cout<<"I can't touch it by myself, it burns. I can use it in laundry.";
+    }
+    void doLaundry(int clothes){
+        if(clothes>10){
+            percentage -= percentage*0.01;
+        } else if(clothes>50){
+            percentage -= percentage*0.04;
+        } else{
+            percentage -= percentage*0.009;
+        }
+    }
 };
 
 class shavingSoap : public Soap{
+    public:
+    void use() override{
+        if(percentage>0){
+            percentage -= percentage*0.009;
+            if(percentage<0){
+                percentage = 0;
+            }
+            std::cout<<"Your beard shaved";
+        } else{
+            std::cout<<"We don't have soap, you wasted all soap..."<<std::endl;
+        }
+    }
 };
 
 class handSoap : public Soap{
-};
+    void use() override{
+        if(percentage>0){
+            percentage -= percentage*0.009;
+            if(percentage<0){
+                percentage = 0;
+            }
+            std::cout<<"Your hands cleaned";
+        } else{
+            std::cout<<"We don't have soap, you wasted all soap..."<<std::endl;
+        }
+    }
+}; 
 
 
 int main(){
