@@ -3,6 +3,8 @@
 #include "Soap.cpp"
 
 class handSoap : public Soap{
+    public:
+    handSoap(std::string _color, std::string _brand, double _price): Soap(_color,_brand,_price){}
     void use() override{
         if(percentage>0){
             percentage -= percentage*0.009;

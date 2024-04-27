@@ -4,6 +4,7 @@
 
 class shavingSoap : public Soap{
     public:
+    shavingSoap(std::string _color, std::string _brand, double _price): Soap(_color,_brand,_price){}
     void use() override{
         if(percentage>0){
             percentage -= percentage*0.009;

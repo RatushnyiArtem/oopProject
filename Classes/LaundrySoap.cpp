@@ -4,6 +4,7 @@
 
 class laundrySoap : public Soap{
     public:
+    laundrySoap(std::string _color, std::string _brand, double _price): Soap(_color,_brand,_price){}
     void use() override{
         std::cout<<"I can't touch it by myself, it burns. I can use it in laundry.";
     }

@@ -20,9 +20,11 @@ class Soap{
                 std::cout<<"We don't have soap, you wasted all soap..."<<std::endl;
             }
         }
-        void soapLeft(){};
         const double getPerc() const{
             return percentage;
+        }
+        const std::string getColor() const {
+            return color;
         }
         const double getPrice() const{
             return price;
