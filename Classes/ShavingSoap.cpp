@@ -1,5 +1,6 @@
 #pragma once
 #include <iostream>
+#include <stdexcept>
 #include "Soap.cpp"
 
 class shavingSoap : public Soap{
@@ -13,7 +14,7 @@ class shavingSoap : public Soap{
             }
             std::cout<<"Your beard shaved";
         } else{
-            std::cout<<"We don't have soap, you wasted all soap..."<<std::endl;
+            throw std::overflow_error("Can't use it, because you already use all Soap");
         }
     }
 };

@@ -44,6 +44,17 @@ bool testUse(){
         assert(percBefore == percAfter);
         return true;  
 }
+bool testException(){
+        try{
+                Soap *p = new Soap("red", "dove", 9.4);
+                do{
+                        p->use();
+                }while(p->getPerc()>0);
+        } catch(std::overflow_error& err){
+                assert(std::string(err.what()) == std::string("Can't use it, because you already use all Soap"));
+        }
+        return true;
+}
 
 int main(){
     std::cout<<testColor()<<std::endl;
@@ -51,5 +62,5 @@ int main(){
     std::cout<<testPrice()<<std::endl;
     std::cout<<testPercentage()<<std::endl;
     std::cout<<testUse()<<std::endl;
-
+    std::cout<<testException();
 }

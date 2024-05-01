@@ -12,7 +12,7 @@ class liquidSoap : public Soap{
                 percentage = 0;
             }
         } else{
-            std::cout<<"We don't have soap, you wasted all soap..."<<std::endl;
+            throw std::overflow_error("Can't use it, because you already use all Soap");
         }
     }
     void makeBubble(){

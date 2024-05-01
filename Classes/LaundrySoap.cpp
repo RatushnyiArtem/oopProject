@@ -1,12 +1,13 @@
 #pragma once
 #include <iostream>
+#include <stdexcept>
 #include "Soap.cpp"
 
 class laundrySoap : public Soap{
     public:
     laundrySoap(std::string _color, std::string _brand, double _price): Soap(_color,_brand,_price){}
     void use() override{
-        std::cout<<"I can't touch it by myself, it burns. I can use it in laundry.";
+        throw std::logic_error("Can't use it, it burns. Try do laundry with it.");
     }
     void doLaundry(int clothes){
         if(clothes>10){

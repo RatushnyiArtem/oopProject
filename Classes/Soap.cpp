@@ -1,5 +1,6 @@
 #pragma once
 #include <iostream>
+#include <stdexcept>
 
 class Soap{
     protected:
@@ -12,12 +13,12 @@ class Soap{
         Soap(std::string _color, std::string _brand, double _price, double _percentage = 100): color(_color), brand(_brand), price(_price), percentage(_percentage) {};
         virtual void use(){
             if(percentage>0){
-                percentage -= percentage*0.012;
+                percentage -= 1.4;
                 if(percentage<0){
                     percentage = 0;
                 }
             } else{
-                std::cout<<"We don't have soap, you wasted all soap..."<<std::endl;
+                throw std::overflow_error("Can't use it, because you already use all Soap");
             }
         }
         const double getPerc() const{
