@@ -5,11 +5,13 @@
 #include "User.cpp"
 
 class Shop{
-    std::string name;
     std::vector<Soap*> elements;
     public:
     void addSoap(Soap *t){
         elements.push_back(t);
+    }
+    std::vector<Soap*> getSoap(){
+        return elements;
     }
     void chooseSoap(User *k){
         for(int i = 0; i<elements.size(); i++){

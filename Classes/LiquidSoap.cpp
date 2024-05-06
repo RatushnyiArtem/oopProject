@@ -7,7 +7,7 @@ class liquidSoap : public Soap{
     liquidSoap(std::string _color, std::string _brand, double _price): Soap(_color,_brand,_price){}
     void use() override{
         if(percentage>0){
-            percentage -= percentage*0.009;
+            percentage -= 1.9;
             if(percentage < 0){
                 percentage = 0;
             }
@@ -17,12 +17,12 @@ class liquidSoap : public Soap{
     }
     void makeBubble(){
         if(percentage>0){
-            percentage -= 10;
+            percentage -= 5;
             if(percentage<0){
                 percentage = 0;
             }
         } else{
-            std::cout<<"Damn, you spent all soap."<<std::endl;
+            throw std::overflow_error("Ooops, I can't... You used all Soap already");
         }
     }
 };

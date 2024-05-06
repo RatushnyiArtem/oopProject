@@ -39,7 +39,7 @@ bool testUse(){
         Soap *p = new Soap("red", "dove", 9.4);
         double percBefore = p->getPerc();
         p->use();
-        double percAfter = percBefore - percBefore*0.012;
+        double percAfter = percBefore - 1.4;
         percBefore = p->getPerc();
         assert(percBefore == percAfter);
         return true;  
@@ -62,5 +62,5 @@ int main(){
     std::cout<<testPrice()<<std::endl;
     std::cout<<testPercentage()<<std::endl;
     std::cout<<testUse()<<std::endl;
-    std::cout<<testException();
+    std::cout<<testException()<<std::endl;
 }

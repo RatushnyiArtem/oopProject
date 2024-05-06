@@ -17,7 +17,7 @@ class User{
         }
         void useSoap(){
             f->use();
-        };
+        }
         Soap*& returnSoap(){
             return f;
         }

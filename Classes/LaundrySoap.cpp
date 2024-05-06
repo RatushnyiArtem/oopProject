@@ -10,12 +10,15 @@ class laundrySoap : public Soap{
         throw std::logic_error("Can't use it, it burns. Try do laundry with it.");
     }
     void doLaundry(int clothes){
-        if(clothes>10){
-            percentage -= percentage*0.01;
-        } else if(clothes>50){
-            percentage -= percentage*0.04;
-        } else{
-            percentage -= percentage*0.009;
+        if(clothes<10){
+            percentage -= 1.01;
+        } else if(clothes<50){
+            percentage -= 1.2;
+        } else if(clothes<=0){
+            throw std::logic_error("You must choose how many clothes (it can't be negative or zero)!");
+        }
+        else{
+            percentage -= 1.85;
         }
     }
 };
